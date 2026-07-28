@@ -103,7 +103,7 @@ btn_avaliar_idade = tk.Button(
     command = avaliar_idade
 )
 btn_avaliar_idade.grid(
-    row = 3,
+    row = 4,
     column = 2
 )
 
