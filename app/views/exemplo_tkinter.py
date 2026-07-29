@@ -77,13 +77,13 @@ btn_escrever_nome.grid(
 )
 
 def avaliar_idade():
-    if txt_idade.get() == "":
+    idade = int(txt_idade.get())
+    if idade == "":
         messagebox.showerror(
             "Sisteminha",
             "Tu só pode estar de sacanagem!"
         )
-        return    
-    idade = int(txt_idade.get())
+        return
     if idade >= 18:
         messagebox.showinfo(
             "Sisteminha",
@@ -104,7 +104,7 @@ btn_avaliar_idade = tk.Button(
 )
 btn_avaliar_idade.grid(
     row = 3,
-    column = 1
+    column = 2
 )
 
 janela.mainloop()
