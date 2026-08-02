@@ -9,7 +9,7 @@ from tkinter import ttk
  
 
 class Fornecedor_View:
-    def __init__(self, root, controller):
+    def __init__(self, root, controller=None):
         self.controller = controller
         self.root = root
         self.configurar_janela()
@@ -225,6 +225,8 @@ class Fornecedor_View:
     def configurar_treeview(self):
         self.tbl_fornecedores = ttk.Treeview(
             self.root,
+            columns=("id", "razao_social", "cnpj"),
+            show="headings",
             height=10
         )
         self.tbl_fornecedores.grid(
