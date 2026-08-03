@@ -8,7 +8,7 @@ from tkinter import messagebox
 from tkinter import ttk
 
 class Estado_View:
-    def __init__(self, root, controller=None):
+    def __init__(self, root, controller):
         self.controller = controller
         self.root = root
         self.configurar_janela()
@@ -231,7 +231,3 @@ class Estado_View:
 
     def iniciar(self):
         self.root.mainloop()
-
-e = Estado_View(tk.Tk())
-e.iniciar()
-        
