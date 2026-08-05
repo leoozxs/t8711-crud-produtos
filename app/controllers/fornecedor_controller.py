@@ -6,14 +6,10 @@ class Fornecedor_Controller:
     def __init__(self, dao, view):
         self.dao = dao
         self.view = view
-<<<<<<< HEAD
-        
-    def new(self):
-        pass
-=======
+
     def new(self):
         self.view.limpar_campos()
->>>>>>> upstream/main
+        
     def save(self):
         try:
             razao_social, nome_fantasia, cnpj, sla_atendimento = self.view.ler_dados_fornecedor()

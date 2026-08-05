@@ -9,7 +9,7 @@ from app.controllers.produto_controller import Produto_Controller
 
 # Componentes de Estados
 from app.dao.estado_dao import Estado_DAO
-from app.views.estado_view import Estado_Terminal_View
+from app.views.estado_view import Estado_View
 from app.controllers.estado_controller import Estado_Controller
 
 # Componentes de Cidades
@@ -51,7 +51,7 @@ class ErpApplication:
 
         self._ctrl_estados = Estado_Controller(
             dao=self._dao_estados,
-            view=Estado_Terminal_View()
+            view=Estado_View(None, None)
         )
 
         # ===========================
