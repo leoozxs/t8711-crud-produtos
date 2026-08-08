@@ -10,8 +10,8 @@ import tkinter as tk
 from tkinter import messagebox
 from tkinter import ttk
 
-class Cidade_View:
-    def __init__(self, root, controller=None):
+class Cidade_View:  
+    def __init__(self, root, controller):
         self.root = root
         self.controller = controller
         self._estados = []
@@ -293,8 +293,3 @@ class Cidade_View:
         self.controller.get_all()
         self.root.mainloop()
         
-
-if __name__ == "__main__":
-    root = tk.Tk()
-    Cidade_View(root)
-    root.mainloop()

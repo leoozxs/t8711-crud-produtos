@@ -9,6 +9,9 @@ class Cidade_Controller:
         self.estado_dao = estado_dao
         self.view = view
 
+    def new(self):
+        self.view.limpar_campos()
+
     def save(self):
 
         try:
@@ -171,32 +174,32 @@ class Cidade_Controller:
                 False
             )
 
-    def inicializar_sistema(self):
+    # def inicializar_sistema(self):
 
-        while True:
+    #     while True:
 
-            os.system("cls" if os.name == "nt" else "clear")
+    #         os.system("cls" if os.name == "nt" else "clear")
 
-            opcao = self.view.renderizar_menu()
+    #         opcao = self.view.iniciar()
 
-            if opcao == 0:
-                break
+    #         if opcao == 0:
+    #             break
 
-            elif opcao == 1:
-                self.save()
+    #         elif opcao == 1:
+    #             self.save()
 
-            elif opcao == 2:
-                self.get_all()
+    #         elif opcao == 2:
+    #             self.get_all()
 
-            elif opcao == 3:
-                self.update()
+    #         elif opcao == 3:
+    #             self.update()
 
-            elif opcao == 4:
-                self.delete()
+    #         elif opcao == 4:
+    #             self.delete()
 
-            else:
+    #         else:
 
-                self.view.exibir_mensagem(
-                    "Opção inválida.",
-                    False
-                )
+    #             self.view.exibir_mensagem(
+    #                 "Opção inválida.",
+    #                 False
+    #             )

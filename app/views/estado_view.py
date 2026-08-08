@@ -19,7 +19,7 @@ class Estado_View:
 
     def configurar_janela(self):
         self.root.title("CRUD de Estados")
-        self.root.geometry("800x600")
+        self.root.geometry("680x600")
         self.root.resizable(False, False)
 
 
