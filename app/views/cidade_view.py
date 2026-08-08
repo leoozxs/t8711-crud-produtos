@@ -1,7 +1,3 @@
-import sys
-from pathlib import Path
-
-sys.path.append(str(Path(__file__).resolve().parents[2]))
 
 
 from app.models.cidade import Cidade
@@ -10,7 +6,9 @@ import tkinter as tk
 from tkinter import messagebox
 from tkinter import ttk
 
-class Cidade_View:  
+
+
+class Cidade_View:
     def __init__(self, root, controller):
         self.root = root
         self.controller = controller
@@ -19,97 +17,107 @@ class Cidade_View:
         self.criar_componentes()
         self.configurar_treeview()
         self.configurar_eventos()
-        
+
     def configurar_janela(self):
         self.root.title("CRUD de Cidades")
-        self.root.geometry("680x600")
-        self.root.resizable(False,False)
-    
+        self.root.geometry("800x600")
+        self.root.resizable(False, False)
+
+
     def criar_componentes(self):
         self.lbl_titulo = tk.Label(
             self.root,
-            text="Cadastro de Cidades",
-            font=("Arial",16,"bold")
+            text = "Cadastro de Cidades",
+            font = ("Arial", 16, "bold"),
         )
         self.lbl_titulo.grid(
-            row=0,
-            column=0,
-            columnspan=4,
-            padx=5,
+            row = 0,
+            column = 0,
+            columnspan = 2,
+            padx = 5,
+            pady = 5
         )
         self.frm_dados = tk.LabelFrame(
-           self.root,
-           text="Dados da Cidade",
-           labelanchor="n"
+            self.root,
+            text = "Dados da cidade"
         )
         self.frm_dados.grid(
-            row=1,
-            column=0,
-            columnspan=4,
-            padx=10,
-            pady=5,
-            sticky="ew"
+            row = 1,
+            column = 0,
+            columnspan=2,
+            padx = 10,
+            pady = 5,
+            sticky = "ew"
         )
+        self.frm_dados.grid_columnconfigure(0, weight=0)
+        self.frm_dados.grid_columnconfigure(1, weight=1)
         self.lbl_id = tk.Label(
             self.frm_dados,
-            text="ID"
+            text = "ID:"
         )
         self.lbl_id.grid(
-            row=0,
-            column=0,
-            padx=5,
-            pady=5
+            row = 0,
+            column = 0,
+            padx = 5,
+            pady = 5,
+            sticky = "w"
         )
         self.txt_id = tk.Entry(
             self.frm_dados,
-            width=6,
-            state="readonly"
+            width = 10,
+            state = "readonly"
         )
         self.txt_id.grid(
-            row=0,
-            column=0,
-            sticky="e",
-            padx=20
+            row = 0,
+            column= 1,
+            padx = 5,
+            pady = 5,
+            sticky = "w"
         )
         self.lbl_nome = tk.Label(
             self.frm_dados,
-            text="Nome"
+            text = "Nome:"
         )
         self.lbl_nome.grid(
-            row=0,
-            column=1,
-            padx=10,
-            sticky="w"
+            row = 1,
+            column = 0,
+            padx = 5,
+            pady = 5,
+            sticky = "w"
         )
         self.txt_nome = tk.Entry(
             self.frm_dados,
-            width=20
+            width = 40
         )
         self.txt_nome.grid(
-            row=0,
-            column=1,
-            sticky="e"
+            row = 1,
+            column = 1,
+            padx = 5,
+            pady = 5,
+            sticky = "w"
         )
-        self.lbl_estado = tk.Label(
+        self.lbl_estados = tk.Label(
             self.frm_dados,
-            text="Estado"
+            text = "Estado:"
         )
-        self.lbl_estado.grid(
-            row=0,
-            column=2,
-            sticky="w",
-            padx=20
+        self.lbl_estados.grid(
+            row = 2,
+            column = 0,
+            padx = 5,
+            pady = 5,
+            sticky = "w"
         )
         self.cmb_estados = ttk.Combobox(
             self.frm_dados,
-            width=25,
-            state="readonly"
+            width = 37,
+            state = "readonly"
         )
         self.cmb_estados.grid(
-            row=0,
-            column=2,
-            padx=10,
-            sticky="e"
+            row = 2,
+            column = 1,
+            padx = 5,
+            pady = 5,
+            sticky = "w"
         )
         self.frm_botoes = tk.Frame(
             self.frm_dados,
@@ -117,11 +125,11 @@ class Cidade_View:
             relief = "groove"
         )
         self.frm_botoes.grid(
-            row = 4,
+            row = 3,
             column = 0,
             padx = 10,
             pady = 5,
-            columnspan = 4,
+            columnspan = 2,
         )
         self.btn_novo = tk.Button(
             self.frm_botoes,
@@ -178,21 +186,20 @@ class Cidade_View:
             padx = 5,
             pady = 5
         )
-    
-    def configurar_treeview(self):
         self.tbl_cidades = ttk.Treeview(
             self.root,
-            height=17
+            height = 12
         )
         self.tbl_cidades.grid(
-            row=2,
-            column=0,
-            columnspan=4,
-            padx=10,
-            pady=10,
-            sticky="nsew"
+            row = 2,
+            column = 0,
+            columnspan = 2,
+            padx = 10,
+            pady = 10,
+            sticky = "nsew"
         )
-        
+
+    def configurar_treeview(self):
         self.tbl_cidades["columns"] = (
             "id",
             "nome",
@@ -200,57 +207,55 @@ class Cidade_View:
         )
         self.tbl_cidades.column(
             "#0",
-            width=0,
-            stretch=False
+            width = 0,
+            stretch = False
         )
         self.tbl_cidades.column(
             "id",
-            width=10,
-            anchor="center"
+            width = 10,
+            anchor = "center"
         )
         self.tbl_cidades.column(
             "nome",
-            width=30
+            width = 50
         )
         self.tbl_cidades.column(
             "estado",
-            width=30
+            width = 40
         )
         self.tbl_cidades.heading(
             "id",
-            text="ID"
+            text = "ID"
         )
         self.tbl_cidades.heading(
             "nome",
-            text="Nome"
+            text = "Nome"
         )
         self.tbl_cidades.heading(
             "estado",
-            text="Estado"
+            text = "Estado"
         )
-        
-        
     def configurar_eventos(self):
         self.btn_novo.config(
-            command=self.controller.new
+            command = self.controller.new
         )
         self.btn_salvar.config(
-            command=self.controller.save
+            command = self.controller.save
         )
         self.btn_alterar.config(
-            command=self.controller.update
+            command = self.controller.update
         )
         self.btn_excluir.config(
-            command=self.controller.delete
+            command = self.controller.delete
         )
         self.btn_fechar.config(
-            command=self.fechar
+            command = self.fechar
         )
         self.tbl_cidades.bind(
             "<<TreeviewSelect>>",
-            self.controller.selecionar_produto
-        )
+            self.controller.selecionar_cidade
 
+        )
     def carregar_estados(self, estados):
         self._estados = estados
         valores = []
@@ -260,36 +265,93 @@ class Cidade_View:
             )
         self.cmb_estados["values"] = valores
         self.cmb_estados.set("")
-    
-    def preencher_campos(self, estado):
-        pass
-    
+
+    def preencher_campos(self, cidade):
+
+        self.limpar_campos()
+        self.txt_id.config(state = "normal")
+        self.txt_id.insert(
+            0,
+            str(cidade.id)
+        )
+        self.txt_id.config(state = "readonly")
+
+        self.txt_nome.insert(
+            0,
+            cidade.nome
+        )
+
+        for indice, estado in enumerate(self._estados):
+            if estado.id == cidade.estado.id:
+                self.cmb_estados.current(indice)
+                break
+
     def limpar_campos(self):
-        pass
-    
+        self.txt_id.config(state = "normal")
+        self.txt_id.delete(0, tk.END)
+        self.txt_id.config(state = "readonly")
+        self.txt_nome.delete(0, tk.END)
+        self.cmb_estados.set("")
+        self.txt_nome.focus()
+
     def limpar_treeview(self):
-        pass
-    
+        for item in self.tbl_cidades.get_children():
+            self.tbl_cidades.delete(item)
+
+
     def get_id_selecionado(self):
-        pass
-    
+
+        item = self.tbl_cidades.selection()[0]
+
+        return self.tbl_cidades.item(item)["values"][0]
+
     def confirmar_exclusao(self):
-        pass
-    
-    def ler_dados_estado(self):
-        pass
-    
-    def exibir_mensagem(self):
-        pass
-    
-    def exibir_estados(self):
-        pass
-    
+
+        return messagebox.askyesno(
+            "Confirmação",
+            "Deseja realmente excluir esta cidade?",
+            parent=self.root
+        )
+
+    def ler_dados_cidade(self):
+        nome = self.txt_nome.get()
+        indice = self.cmb_estados.current()
+        if indice < 0:
+            raise ValueError("Selecione um estado.")
+        estado = self._estados[indice]
+        return nome, estado
+
+    def exibir_mensagem(self, mensagem, sucesso=True):
+        if sucesso:
+            messagebox.showinfo(
+                "Mini ERP",
+                mensagem,
+                parent=self.root
+            )
+        else:
+            messagebox.showerror(
+                "Mini ERP",
+                mensagem,
+                parent=self.root
+            )
+    def exibir_cidades(self, cidades):
+
+        self.limpar_treeview()
+
+        for cidade in cidades:
+
+            self.tbl_cidades.insert(
+                "",
+                tk.END,
+                values=(
+                    cidade.id,
+                    cidade.nome,
+                    f"{cidade.estado.sigla} - {cidade.estado.nome}"
+                )
+            )
     def fechar(self):
         self.root.destroy()
-    
+
     def iniciar(self):
-        self.controller.carregar_fornecedores()
+        self.controller.carregar_estados()
         self.controller.get_all()
-        self.root.mainloop()
-        
